@@ -1,0 +1,17 @@
+<div layout="column" class="search">
+		<div class="title">le bon job</div>
+		<div class="subtitle">le bon job ... pour trouver la personne qu'il vaut faut</div>
+
+		<md-input-container>
+		 		<label>Entrez un nom, un numéro de siret ou des compétences à rechercher</label>
+		 		<input type="text" flex ng-model="query" id="query"></input>
+		 		<md-icon ng-click="query=''">clear</md-icon>
+		</md-input-container>
+		
+		<md-button class="md-primary" ng-click="search(query)">
+				Rechercher
+		 		<md-icon>search</md-icon>
+		</md-button>
+</div>
+			
+			

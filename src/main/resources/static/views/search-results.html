@@ -1,0 +1,103 @@
+<div class="results" layout="row" flex>
+	<div class="title"><a href="#/">le bon job</a></div>
+	<md-input-container flex>
+  	<label>Entrez un nom, un numéro de siret ou des compétences à rechercher</label>
+ 		<input type="text" ng-model="query" id="query"></input>
+ 		<md-icon ng-click="search(query)">search</md-icon>
+	</md-input-container>
+</div>
+
+<span layout="row" layout-align="end start" class="filter">
+	<md-input-container>
+		<label>Filtrer les résultats</label>
+		<input type="text" ng-model="filtre" />
+	</md-input-container>
+</span>
+
+<fieldset class="standard" ng-show="datas" ng-repeat="data in datas | filter:filtre" layout-margin>
+      <legend ng-click="expand=!expand">
+      	<span class="firstname">{{data.first_name}}</span>, <span class="lastname">{{data.last_name}}</span>
+      	<span class="sublegend">(<span class="rank">{{data.rank}} étoiles</span> - disponible sous {{data.availability}} mois)</span>
+      	<md-icon ng-show="!expand">add</md-icon>
+      	<md-icon ng-show="expand">remove</md-icon>
+      </legend>	
+      
+			<span ng-hide="expand" layout="row" layout-align="start start" style="margin:0px; margin-top:-10px; padding:0px;">
+				...
+			</span>
+
+			<div layout="row" ng-show="expand" class="table">
+						
+				<div flex="50" layout="column">
+					<md-list>
+						<md-list-item class="md-2-line">
+							<div class="md-list-item-text">
+		          <h3>Prénom, Nom</h3>
+		          <p>
+		          <span class="firstname">{{data.first_name}}</span>,
+		          <span class="lastname">{{data.last_name}}</span>
+		          </p>
+			        </div>
+						</md-list-item>
+						<md-list-item class="md-2-line">
+						<div class="md-list-item-text">
+								<h3>Numéro de Siret</h3>
+								<p>{{data.siret}}</p>
+						</div>
+						</md-list-item>
+		        <md-list-item class="md-2-line">
+		        		<div class="md-list-item-text">
+								<h3>Adresse</h3>
+		            <p>{{data.address}}</p>
+            		</div>
+	           </md-list-item>
+		        <md-list-item class="md-3-line">
+		        		<div class="md-list-item-text">
+								<h3>Contact</h3>
+		            <p><md-icon>email</md-icon>{{data.email}}</p>
+ 		            <p><md-icon>phone</md-icon>{{data.phone}}</p>
+            		</div>
+	           </md-list-item>
+	           
+					</md-list>
+				</div>
+								
+				<div flex layout="column">
+				<md-list>
+					<md-list-item class="md-2-line">
+					<div class="md-list-item-text">
+							<h3>Compétences</h3>
+							<p>{{data.skills}}</p>
+					</div>
+					</md-list-item>
+					<md-list-item class="md-2-line" ng-show="data.cv_checked">
+					<div class="md-list-item-text">
+						<h3>Statut du CV</h3>
+						<p>
+            <md-icon>check</md-icon> CV Vérifié
+            </p>
+					</div>
+					</md-list-item>
+					<md-list-item class="md-2-line" ng-show="!data.cv_checked">
+					<div class="md-list-item-text">
+						<h3>Statut du CV</h3>
+            <p>
+            <md-icon>clear</md-icon> CV non encore vérifié !
+            </p>
+					</div>
+					</md-list-item>
+					<md-list-item class="md-2-line">
+					<div class="md-list-item-text">
+						<h3>Réseaux sociaux</h3>
+						<p>
+						<span layout="row" layout-align="start center" layout-margin>
+							<md-icon ng-repeat="i in data.social_networks" md-svg-src="/icons/{{i}}.svg">{{i}}</md-icon>
+						</span>
+						</p>
+					</div>
+					</md-list-item>
+				</md-list>
+
+				</div>
+		</div>
+	</fieldset>

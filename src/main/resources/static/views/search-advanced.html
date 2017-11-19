@@ -1,0 +1,71 @@
+<div layout="column" layout-align="start start">
+	<div layout="column" layout-align="center center">
+			<div class="title">le bon job</div>
+			<div class="subtitle">le bon job ... pour trouver la personne qu'il vaut faut</div>
+	</div>
+	<md-input-container class="search">
+  	<label>Entrez un nom, un numéro de siret ou des compétences à rechercher</label>
+ 		<input type="text" ng-model="query" id="query"></input>
+ 		<md-icon ng-click="search(query)">search</md-icon>
+	</md-input-container>
+</div>
+	
+<fieldset class="standard" ng-show="datas" ng-repeat="data in datas" layout-margin>
+      <legend>
+      	{{data.first_name}} {{data.last_name}}
+      	<span class="sublegend">(disponible sous {{data.availability}} mois)</span>
+      	<md-icon ng-click="expand=true" ng-show="!expand">keyboard_arrow_right</md-icon>
+      	<md-icon ng-click="expand=false" ng-show="expand">keyboard_arrow_left</md-icon>
+      </legend>	
+	
+			<div layout="row" layout-padding layout-margin ng-show="expand">
+						
+				<div flex="50" layout="column" layout-margin>
+					<div layout="column" layout-margin>
+							<label>Disponibilité</label>
+	            <div>{{data.availability}} mois</div>
+	        </div>
+				
+					<md-input-container>
+							<label>Nom</label>
+	            <input ng-model="data.last_name" />
+	        </md-input-container>
+					<md-input-container>
+							<label>Prénom</label>
+	            <input ng-model="data.first_name" />
+	        </md-input-container>
+	        <md-input-container>
+							<label>Adresse</label>
+	            <textarea ng-model="data.address" rows="3"></textarea>
+	        </md-input-container>
+	        
+				</div>
+				
+				<div flex layout="column" layout-margin>
+					<md-input-container>
+						<label>Compétences</label>
+						<textarea ng-model="data.skills"></textarea>
+					</md-input-container>
+					
+					<div layout="row" ng-show="data.cv_checked">
+            <i class="fa fa-check-square-o"></i>
+            &nbsp;
+            <label>CV vérifié</label>
+					</div>
+
+					<div layout="row" ng-show="!data.cv_checked">
+            <i class="fa fa-times-circle-o"></i>
+            &nbsp;
+            <label>CV non encore vérifié</label>
+					</div>
+					
+					<div layout="column">
+						<label>Réseaux sociaux</label>
+						<div layout="row" layout-align="start start" layout-margin>
+							<md-icon ng-repeat="i in data.social_networks" md-svg-src="/icons/{{i}}.svg">{{i}}</md-icon>
+						</div>
+					</div>
+
+				</div>					
+		</div>
+	</fieldset>

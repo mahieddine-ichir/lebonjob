@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="ISO-8859-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<base href="/" />
+	<link rel="stylesheet" href="css/angular-material.min.css" />
+	<link href="css/MaterialIcons.css" rel="stylesheet" />
+	<!-- 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	 -->
+	<style type="text/css">
+
+			body {
+				font-family: Roboto, Helvetica Neue, sans-serif;
+			}
+			
+			md-sidenav {
+				width: 250px;
+				padding: 2px;
+				background: #106CC8;
+				color: white;
+					border: solid 0.1px rgb(255, 255, 255, .75);
+					padding-top: 20px;
+			}
+			
+			md-content {
+				padding: 20px;
+				background-color: rgb(250, 250, 250);
+				color: rgba(0, 0, 0, 0.87);
+				font-size: 20px;
+				width: 80%;
+				margin: 0 auto;
+			}
+			.search {
+				margin: 0 auto;
+				margin-top: 50px;
+				width: 100%;
+			}
+			.search .title, .subtitle {
+				text-align: center;
+			}
+			.search md-input-container {
+				margin: 0 auto;
+				margin-top: 100px;
+				width: 70%;
+			}
+			
+			.search .md-primary {
+				width: 200px;
+				margin: 0 auto;
+			}
+
+			fieldset {
+				border: none;
+				background-color: rgba(0, 0, 0, 0.02);
+				border-radius: 10px;
+			}
+
+			fieldset legend {
+    background-color: rgb(250, 250, 250);
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 0px;
+			}
+			
+			.table {
+			margin-top: -10px;
+			margin-bottom: 0px;
+			}
+
+			.title {
+	    font-weight: bold;
+  	  margin: 5px;
+  	  text-transform: uppercase;
+			}
+
+			.search .title {
+			font-size: 40px;
+			}
+			
+			.results .title {
+				font-size: 25px;
+			vertical-align: bottom;
+			line-height: 70px;
+			}
+			
+			.sublegend {
+				font-size: 15px;
+			}
+			
+			.fa-spinner {
+				text-align: center;
+			}
+			.search .subtitle {
+			font-size: 25px;
+			font-style: italic;
+			}
+			
+			.results {
+			width: 80%;
+			}
+			
+			.results a {
+			text-decoration: none;
+			}
+			
+			.lastname {
+				text-transform: uppercase;
+			}
+			
+			.firstname {
+				text-transform: capitalize;
+			}
+			
+			.filter {
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.rank {
+			}
+			
+			.results input {
+			margin-left: 10px;
+			}
+			.results md-input-container label {
+				margin-left: 10px;
+				font-size: 15px;
+			}
+			.md-3-line p {
+				margin-left: 2px;
+			}
+			.md-3-line md-icon {
+				margin-right: 2px;
+			}
+	</style>
+</head>
+<body ng-app="app" ng-cloak layout="row" ng-init="openMenu=false">
+
+	<md-sidenav layout="column" md-is-locked-open="openMenu" class="md-sidenav-left md-whiteframe-z2">
+	<div layout="column" layout-align="start center">
+			<div><a class="md-button" href="#/">Recherche simplifiée</a></div>
+			<div><a class="md-button" href="#/advanced" disabled>Recherche avancée</a></div>
+			<md-divider />
+			<div><a class="md-button" href="#/advanced" disabled>Accès réservé</a></div>
+	</div>
+	<div layout="column" layout-align="end center" flex>
+				LE BON JOB &copy; 2017
+			</div>
+	</md-sidenav>
+
+	<div layout="column" layout-align="center center">
+   	<md-icon ng-click="openMenu=true" ng-hide="openMenu">keyboard_arrow_right</md-icon>
+	</div>
+
+	<div layout="column" layout-align="center center">
+   	<md-icon ng-click="openMenu=false" ng-show="openMenu">keyboard_arrow_left</md-icon>
+	</div>
+
+	<md-content ng-hide="true" layout-align="center center">
+		<i class="fa fa-spinner"></i>
+	</md-content>
+	
+	<md-content>
+		<ng-view />
+	</md-content>
+	
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script src="js/angular-animate.min.js"></script>
+	<script src="js/angular-aria.min.js"></script>
+	<script src="js/angular-messages.min.js"></script>
+
+	<!-- Angular Material Library -->
+	<script src="js/angular-material.min.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>
